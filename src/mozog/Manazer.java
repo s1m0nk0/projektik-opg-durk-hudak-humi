@@ -40,4 +40,5 @@ public class Manazer {
     public ArrayList<Todo> getTodos() {
         return todos;
     }
+
 }
