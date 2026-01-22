@@ -37,7 +37,7 @@ public class Todo {
     public void oznacPolozkuAkoSplnenu(String nazovPolozky) {
         for (Item i : polozky) {
             if (i.getNazov().equals(nazovPolozky)) {
-                i.markCompleted();
+                i.oznacAkoSplnene();
                 break;
             }
         }
