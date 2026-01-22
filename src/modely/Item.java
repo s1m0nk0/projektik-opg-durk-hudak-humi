@@ -17,11 +17,20 @@ public class Item {
         return nazov;
     }
 
+    public String getPopis() {
+        return popis;
+    }
+
     public boolean isSplnene() {
         return splnene;
+    }
+
+    public String getDeadline() {
+        return deadline;
     }
 
     public void oznacAkoSplnene() {
         splnene = true;
     }
+
 }
