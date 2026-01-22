@@ -46,5 +46,4 @@ public class Todo {
     public ArrayList<Item> getPolozky() {
         return polozky;
     }
-
 }

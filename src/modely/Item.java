@@ -32,5 +32,4 @@ public class Item {
     public void oznacAkoSplnene() {
         splnene = true;
     }
-
 }
