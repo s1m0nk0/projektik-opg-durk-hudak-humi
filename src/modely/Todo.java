@@ -19,6 +19,30 @@ public class Todo {
         polozky.add(item);
     }
 
+    public void vymazPolozku(String nazovPolozky) {
+        Item naVymazanie = null;
+
+        for (Item i : polozky) {
+            if (i.getNazov().equals(nazovPolozky)) {
+                naVymazanie = i;
+                break;
+            }
+        }
+
+        if (naVymazanie != null) {
+            polozky.remove(naVymazanie);
+        }
+    }
+
+    public void oznacPolozkuAkoSplnenu(String nazovPolozky) {
+        for (Item i : polozky) {
+            if (i.getNazov().equals(nazovPolozky)) {
+                i.markCompleted();
+                break;
+            }
+        }
+    }
+
     public ArrayList<Item> getPolozky() {
         return polozky;
     }
