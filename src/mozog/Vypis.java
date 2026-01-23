@@ -15,13 +15,23 @@ public class Vypis {
 
     public static void vypisPolozky(Todo t) {
         for (Item i : t.getPolozky()) {
-            System.out.println("- " + i.getNazov());
+            System.out.println(
+                    "- " + i.getNazov() +
+                    " | " + i.getPopis() +
+                    " | deadline: " + (i.getDeadline() != null ? i.getDeadline() : "bez deadline") +
+                    " | splnené: " + (i.isSplnene() ? "áno" : "nie")
+            );
         }
     }
 
     public static void vypisPolozky(List<Item> polozky) {
         for (Item i : polozky) {
-            System.out.println("- " + i.getNazov());
+            System.out.println(
+                    "- " + i.getNazov() +
+                    " | " + i.getPopis() +
+                    " | deadline: " + (i.getDeadline() != null ? i.getDeadline() : "bez deadline") +
+                    " | splnené: " + (i.isSplnene() ? "áno" : "nie")
+            );
         }
     }
 }
