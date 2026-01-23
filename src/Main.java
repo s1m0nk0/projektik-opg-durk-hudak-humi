@@ -14,6 +14,7 @@ public class Main {
         skola.pridajPolozku(new Item("Zatematika", "DÚ strana 45", "2026-01-25"));
         skola.pridajPolozku(new Item("Slovenčina", "Čítanie", "2027-02-30"));
         skola.pridajPolozku(new Item("Biológia", "Projekt", null));
+        skola.oznacPolozkuAkoSplnenu("Zatematika");
 
         System.out.println("Zoznam TODO:");
         Vypis.vypisTodos(manazer);

@@ -26,12 +26,22 @@ public class Triedenie {
         @Override
         public int compare(Item a, Item b) {
 
+            if (a.isSplnene() && !b.isSplnene()) {
+                return 1;
+            }
+
+            if (!a.isSplnene() && b.isSplnene()) {
+                return -1;
+            }
+
             if (a.getDeadline() == null && b.getDeadline() == null) {
                 return 0;
             }
+
             if (a.getDeadline() == null) {
                 return 1;
             }
+
             if (b.getDeadline() == null) {
                 return -1;
             }
@@ -45,7 +55,17 @@ public class Triedenie {
 
         @Override
         public int compare(Item a, Item b) {
+
+            if (a.isSplnene() && !b.isSplnene()) {
+                return 1;
+            }
+
+            if (!a.isSplnene() && b.isSplnene()) {
+                return -1;
+            }
+
             return a.getNazov().compareToIgnoreCase(b.getNazov());
         }
+
     }
 }
