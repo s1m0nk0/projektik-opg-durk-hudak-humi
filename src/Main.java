@@ -13,6 +13,7 @@ public class Main {
 
         skola.pridajPolozku(new Item("Zatematika", "DÚ strana 45", "2026-01-25"));
         skola.pridajPolozku(new Item("Slovenčina", "Čítanie", "2027-02-30"));
+        skola.pridajPolozku(new Item("Biológia", "Projekt", null));
 
         System.out.println("Zoznam TODO:");
         Vypis.vypisTodos(manazer);
@@ -24,7 +25,6 @@ public class Main {
         Vypis.vypisPolozky(Triedenie.zoradPodlaNazvu(skola.getPolozky()));
         System.out.println("\nVytriedene podla deadline:");
         Vypis.vypisPolozky(Triedenie.zoradPodlaDeadline(skola.getPolozky()));
-
 
     }
 }
