@@ -1,1 +1,1 @@
-# projektik-opg-durk-hudak-humi 
+# projektik-opg-durk-hudak-humi
