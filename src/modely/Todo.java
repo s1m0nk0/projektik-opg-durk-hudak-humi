@@ -16,6 +16,11 @@ public class Todo {
     }
 
     public void pridajPolozku(Item item) {
+        for (Item i : polozky) {
+            if (i.getNazov().equalsIgnoreCase(item.getNazov())) {
+                return;
+            }
+        }
         polozky.add(item);
     }
 
