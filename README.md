@@ -42,7 +42,7 @@ Projekt je určený ako školské zadanie / cvičný projekt. Neobsahuje grafick
 
 ## Autori
 
-Projekt vytvorený tímovou spoluprácou (Šimon Durkáč, Dávid Hudák. Tomáš Humeňaj).
+Projekt vytvorený tímovou spoluprácou (Šimon Durkáč, Dávid Hudák ft. Tomáš Humeňaj).
 
 ## Špeciálne poďakovanie
 <img src="d2d150f41a9e0c477aec7d49d90a6f5b.jpg" width="600">
