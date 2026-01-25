@@ -44,4 +44,5 @@ Projekt je určený ako školské zadanie / cvičný projekt. Neobsahuje grafick
 
 Projekt vytvorený tímovou spoluprácou (Šimon Durkáč, Dávid Hudák. Tomáš Humeňaj).
 
-![Špeciálne poďakovanie](obrazok/d2d150f41a9e0c477aec7d49d90a6f5b.jpg)
+## Špeciálne poďakovanie
+<img src="d2d150f41a9e0c477aec7d49d90a6f5b.jpg" width="600">

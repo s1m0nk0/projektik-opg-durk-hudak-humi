@@ -4,53 +4,131 @@ import mozog.Manazer;
 import mozog.Vypis;
 import mozog.Triedenie;
 
+import java.util.Scanner;
+
 public class Main {
+
     public static void main(String[] args) {
-
-        System.out.println("=== TEST TODO APLIKÁCIE ===\n");
-
-        // 1. Vytvorenie manažéra
+        Scanner sc = new Scanner(System.in);
         Manazer manazer = new Manazer();
 
-        // 2. Vytvorenie TODO
-        System.out.println("1) Vytváram TODO: Škola");
-        Todo skola = new Todo("Škola");
-        manazer.pridajTodo(skola);
+        boolean bezi = true;
 
-        // 3. Pridávanie položiek
-        System.out.println("\n2) Pridávam položky do TODO Škola");
-        skola.pridajPolozku(new Item("Zatematika", "DÚ strana 45", "2026-01-25"));
-        skola.pridajPolozku(new Item("Slovenčina", "Čítanie", "2027-02-30"));
-        skola.pridajPolozku(new Item("Biológia", "Projekt", null));
+        while (bezi) {
+            System.out.println("\n=== TODO APLIKÁCIA ===");
+            System.out.println("1 - Vytvor TODO");
+            System.out.println("2 - Pridaj položku do TODO");
+            System.out.println("3 - Vypíš všetky TODO");
+            System.out.println("4 - Vypíš položky v TODO");
+            System.out.println("5 - Označ položku ako splnenú");
+            System.out.println("6 - Zoradiť položky");
+            System.out.println("0 - Koniec");
+            System.out.print("Vyber možnosť: ");
 
-        // 4. Výpis všetkých TODO
-        System.out.println("\n3) Zoznam všetkých TODO:");
-        Vypis.vypisTodos(manazer);
+            int volba = Integer.parseInt(sc.nextLine());
 
-        // 5. Výpis položiek v TODO
-        System.out.println("\n4) Položky v TODO Škola:");
-        Vypis.vypisPolozky(skola);
+            switch (volba) {
 
-        // 6. Označenie položky ako splnenej
-        System.out.println("\n5) Označujem položku 'Zatematika' ako splnenú");
-        skola.oznacPolozkuAkoSplnenu("Zatematika");
+                case 1:
+                    System.out.print("Zadaj názov TODO: ");
+                    String nazovTodo = sc.nextLine();
+                    manazer.vytvorTodo(nazovTodo);
+                    System.out.println("TODO vytvorené.");
+                    break;
 
-        System.out.println("\nAktuálny stav položiek:");
-        Vypis.vypisPolozky(skola);
+                case 2:
+                    System.out.print("Zadaj názov TODO: ");
+                    nazovTodo = sc.nextLine();
+                    Todo todo = manazer.najdiTodo(nazovTodo);
 
-        // 7. Triedenie podľa názvu
-        System.out.println("\n6) Triedenie položiek podľa názvu (splnené sú na konci):");
-        Vypis.vypisPolozky(Triedenie.zoradPodlaNazvu(skola.getPolozky()));
+                    if (todo == null) {
+                        System.out.println("TODO neexistuje.");
+                        break;
+                    }
 
-        // 8. Triedenie podľa deadline
-        System.out.println("\n7) Triedenie položiek podľa deadline (null deadline ide na koniec):");
-        Vypis.vypisPolozky(Triedenie.zoradPodlaDeadline(skola.getPolozky()));
+                    System.out.print("Názov položky: ");
+                    String nazov = sc.nextLine();
 
-        // 9. Vymazanie položky
-        System.out.println("\n8) Vymazávam položku 'Slovenčina'");
-        skola.vymazPolozku("Slovenčina");
+                    System.out.print("Popis položky: ");
+                    String popis = sc.nextLine();
 
-        System.out.println("\nStav po vymazaní položky:");
-        Vypis.vypisPolozky(skola);
+                    System.out.print("Deadline (YYYY-MM-DD): ");
+                    String deadline = sc.nextLine();
+
+                    todo.pridajPolozku(new Item(nazov, popis, deadline));
+                    System.out.println("Položka pridaná.");
+                    break;
+
+                case 3:
+                    System.out.println("\nZoznam TODO:");
+                    Vypis.vypisTodos(manazer);
+                    break;
+
+                case 4:
+                    System.out.print("Zadaj názov TODO: ");
+                    nazovTodo = sc.nextLine();
+                    todo = manazer.najdiTodo(nazovTodo);
+
+                    if (todo == null) {
+                        System.out.println("TODO neexistuje.");
+                        break;
+                    }
+
+                    System.out.println("Položky:");
+                    Vypis.vypisPolozky(todo);
+                    break;
+
+                case 5:
+                    System.out.print("Zadaj názov TODO: ");
+                    nazovTodo = sc.nextLine();
+                    todo = manazer.najdiTodo(nazovTodo);
+
+                    if (todo == null) {
+                        System.out.println("TODO neexistuje.");
+                        break;
+                    }
+
+                    System.out.print("Zadaj názov položky: ");
+                    String nazovPolozky = sc.nextLine();
+
+                    todo.oznacPolozkuAkoSplnenu(nazovPolozky);
+                    System.out.println("Položka označená ako splnená.");
+                    break;
+
+                case 6:
+                    System.out.print("Zadaj názov TODO: ");
+                    nazovTodo = sc.nextLine();
+                    todo = manazer.najdiTodo(nazovTodo);
+
+                    if (todo == null) {
+                        System.out.println("TODO neexistuje.");
+                        break;
+                    }
+
+                    System.out.println("1 - Podľa názvu");
+                    System.out.println("2 - Podľa deadline");
+                    System.out.print("Vyber triedenie: ");
+                    int triedenie = Integer.parseInt(sc.nextLine());
+
+                    if (triedenie == 1) {
+                        Vypis.vypisPolozky(Triedenie.zoradPodlaNazvu(todo.getPolozky()));
+                    } else if (triedenie == 2) {
+                        Vypis.vypisPolozky(Triedenie.zoradPodlaDeadline(todo.getPolozky()));
+                    } else {
+                        System.out.println("Neplatná voľba.");
+                    }
+                    break;
+
+                case 0:
+                    bezi = false;
+                    System.out.println("Aplikácia ukončená.");
+                    break;
+
+                default:
+                    System.out.println("Neplatná voľba.");
+            }
+        }
+
+        sc.close();
     }
 }
