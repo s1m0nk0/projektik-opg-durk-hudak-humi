@@ -22,10 +22,18 @@ public class Main {
             System.out.println("4 - Vypíš položky v TODO");
             System.out.println("5 - Označ položku ako splnenú");
             System.out.println("6 - Zoradiť položky");
+            System.out.println("7 - Vymaž položku");
             System.out.println("0 - Koniec");
             System.out.print("Vyber možnosť: ");
 
-            int volba = Integer.parseInt(sc.nextLine());
+            int volba;
+
+            try {
+                volba = Integer.parseInt(sc.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("Neplatná voľba.");
+                continue;
+            }
 
             switch (volba) {
 
@@ -108,7 +116,15 @@ public class Main {
                     System.out.println("1 - Podľa názvu");
                     System.out.println("2 - Podľa deadline");
                     System.out.print("Vyber triedenie: ");
-                    int triedenie = Integer.parseInt(sc.nextLine());
+
+                    int triedenie;
+
+                    try {
+                        triedenie = Integer.parseInt(sc.nextLine());
+                    } catch (NumberFormatException e) {
+                        System.out.println("Neplatná voľba.");
+                        break;
+                    }
 
                     if (triedenie == 1) {
                         Vypis.vypisPolozky(Triedenie.zoradPodlaNazvu(todo.getPolozky()));
@@ -117,6 +133,23 @@ public class Main {
                     } else {
                         System.out.println("Neplatná voľba.");
                     }
+                    break;
+
+                case 7:
+                    System.out.print("Zadaj názov TODO: ");
+                    nazovTodo = sc.nextLine();
+                    todo = manazer.najdiTodo(nazovTodo);
+
+                    if (todo == null) {
+                        System.out.println("TODO neexistuje.");
+                        break;
+                    }
+
+                    System.out.print("Zadaj názov položky na vymazanie: ");
+                    nazovPolozky = sc.nextLine();
+
+                    todo.vymazPolozku(nazovPolozky);
+                    System.out.println("Položka vymazaná.");
                     break;
 
                 case 0:
