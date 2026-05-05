@@ -10,9 +10,6 @@ public class Manazer {
         todos = new ArrayList<>();
     }
 
-    public void pridajTodo(Todo todo) {
-        todos.add(todo);
-    }
 
     public void vytvorTodo(String nazov) {
         if (najdiTodo(nazov) == null) {

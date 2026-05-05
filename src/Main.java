@@ -23,6 +23,7 @@ public class Main {
             System.out.println("5 - Označ položku ako splnenú");
             System.out.println("6 - Zoradiť položky");
             System.out.println("7 - Vymaž položku");
+            System.out.println("8 - Vymaž TODO");
             System.out.println("0 - Koniec");
             System.out.print("Vyber možnosť: ");
 
@@ -150,6 +151,14 @@ public class Main {
 
                     todo.vymazPolozku(nazovPolozky);
                     System.out.println("Položka vymazaná.");
+                    break;
+
+                case 8:
+                    System.out.print("Zadaj názov TODO na vymazanie: ");
+                    nazovTodo = sc.nextLine();
+
+                    manazer.vymazTodo(nazovTodo);
+                    System.out.println("TODO vymazané.");
                     break;
 
                 case 0:
