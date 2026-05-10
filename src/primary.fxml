@@ -1,35 +1,69 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
+<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+    <top>
+        <VBox spacing="6.0">
+            <padding>
+                <Insets bottom="16.0" left="20.0" right="20.0" top="18.0" />
+            </padding>
+            <Label text="TODO aplikacia" />
+        </VBox>
+    </top>
 
-<VBox xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Button mnemonicParsing="false" text="Button 1" GridPane.rowIndex="1" />
-            <Button layoutX="10.0" layoutY="65.0" mnemonicParsing="false" text="Button 2" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Button layoutX="10.0" layoutY="65.0" mnemonicParsing="false" text="Button 3" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <Button layoutX="10.0" layoutY="65.0" mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Button layoutX="10.0" layoutY="65.0" mnemonicParsing="false" text="Button" GridPane.columnIndex="1" />
-            <Button layoutX="10.0" layoutY="65.0" mnemonicParsing="false" text="Button" GridPane.rowIndex="3" />
-            <Button layoutX="10.0" layoutY="65.0" mnemonicParsing="false" text="Button" GridPane.rowIndex="2" />
-            <Button layoutX="10.0" layoutY="65.0" mnemonicParsing="false" text="Button" />
-         </children>
-      </GridPane>
-   </children>
-</VBox>
+    <center>
+        <HBox spacing="16.0">
+            <padding>
+                <Insets bottom="16.0" left="20.0" right="20.0" top="16.0" />
+            </padding>
+
+            <VBox prefWidth="270.0" spacing="10.0">
+                <Label text="TODO zoznamy" />
+                <ListView fx:id="todoList" VBox.vgrow="ALWAYS" />
+
+                <TextField fx:id="nazovTodoField" promptText="Nazov noveho TODO" />
+                <HBox spacing="8.0">
+                    <Button maxWidth="Infinity" onAction="#vytvorTodo" text="Vytvor TODO" HBox.hgrow="ALWAYS" />
+                    <Button maxWidth="Infinity" onAction="#vymazTodo" text="Vymaz TODO" HBox.hgrow="ALWAYS" />
+                </HBox>
+            </VBox>
+
+            <VBox spacing="10.0" HBox.hgrow="ALWAYS">
+                <Label text="Polozky vo vybranom TODO" />
+                <ListView fx:id="polozkyList" VBox.vgrow="ALWAYS" />
+
+                <HBox spacing="8.0">
+                    <Button onAction="#oznacAkoSplnene" text="Oznac ako splnene" />
+                    <Button onAction="#vymazPolozku" text="Vymaz polozku" />
+                    <Button onAction="#zoradPodlaNazvu" text="Zorad podla nazvu" />
+                    <Button onAction="#zoradPodlaDeadline" text="Zorad podla deadline" />
+                </HBox>
+
+                <Label text="Nova polozka" />
+                <HBox spacing="8.0">
+                    <TextField fx:id="nazovPolozkyField" promptText="Nazov polozky" HBox.hgrow="ALWAYS" />
+                    <TextField fx:id="deadlineField" prefWidth="160.0" promptText="Deadline YYYY-MM-DD" />
+                </HBox>
+                <TextArea fx:id="popisField" prefRowCount="3" promptText="Popis polozky" wrapText="true" />
+                <Button maxWidth="Infinity" onAction="#pridajPolozku" text="Pridaj polozku" />
+            </VBox>
+        </HBox>
+    </center>
+
+    <bottom>
+        <Label fx:id="stavLabel">
+            <padding>
+                <Insets bottom="12.0" left="20.0" right="20.0" top="12.0" />
+            </padding>
+        </Label>
+    </bottom>
+</BorderPane>
