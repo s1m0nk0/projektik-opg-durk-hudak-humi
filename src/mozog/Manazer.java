@@ -2,6 +2,7 @@ package mozog;
 
 import modely.Todo;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Manazer {
     private ArrayList<Todo> todos;
@@ -36,6 +37,10 @@ public class Manazer {
 
     public ArrayList<Todo> getTodos() {
         return todos;
+    }
+
+    public void nahradTodos(List<Todo> noveTodos) {
+        todos = new ArrayList<>(noveTodos);
     }
 
 }

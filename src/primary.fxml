@@ -35,6 +35,15 @@
                     <Button maxWidth="Infinity" onAction="#vytvorTodo" text="Vytvor TODO" HBox.hgrow="ALWAYS" />
                     <Button maxWidth="Infinity" onAction="#vymazTodo" text="Vymaz TODO" HBox.hgrow="ALWAYS" />
                 </HBox>
+
+                <Label text="Subor a internet" />
+                <TextField fx:id="suborField" promptText="data/todo-data.txt" />
+                <HBox spacing="8.0">
+                    <Button maxWidth="Infinity" onAction="#ulozDoSuboru" text="Uloz" HBox.hgrow="ALWAYS" />
+                    <Button maxWidth="Infinity" onAction="#nacitajZoSuboru" text="Nacitaj" HBox.hgrow="ALWAYS" />
+                </HBox>
+                <TextField fx:id="urlField" promptText="https://example.com/todo-data.txt" />
+                <Button maxWidth="Infinity" onAction="#nacitajZInternetu" text="Nacitaj z internetu" />
             </VBox>
 
             <VBox spacing="10.0" HBox.hgrow="ALWAYS">

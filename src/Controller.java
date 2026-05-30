@@ -8,7 +8,10 @@ import modely.Item;
 import modely.Todo;
 import mozog.Manazer;
 import mozog.Triedenie;
+import mozog.UkladacDat;
 
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,6 +32,12 @@ public class Controller {
     private TextArea popisField;
 
     @FXML
+    private TextField suborField;
+
+    @FXML
+    private TextField urlField;
+
+    @FXML
     private ListView<String> todoList;
 
     @FXML
@@ -40,6 +49,7 @@ public class Controller {
     @FXML
     private void initialize() {
         todoList.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> zobrazPolozky());
+        suborField.setText("data/todo-data.txt");
         stavLabel.setText("Vytvor TODO zoznam a pridaj do neho polozky.");
     }
 
@@ -161,8 +171,87 @@ public class Controller {
         nastavStav("Polozky zoradene podla deadline.");
     }
 
+    @FXML
+    private void ulozDoSuboru() {
+        Path cesta = nacitajCestu();
+
+        if (cesta == null) {
+            return;
+        }
+
+        try {
+            UkladacDat.uloz(manazer, cesta);
+            nastavStav("Data ulozene do suboru: " + cesta);
+        } catch (IOException e) {
+            nastavStav("Subor sa nepodarilo ulozit: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private void nacitajZoSuboru() {
+        Path cesta = nacitajCestu();
+
+        if (cesta == null) {
+            return;
+        }
+
+        try {
+            nahradData(UkladacDat.nacitaj(cesta));
+            nastavStav("Data nacitane zo suboru: " + cesta);
+        } catch (IOException | IllegalArgumentException e) {
+            nastavStav("Subor sa nepodarilo nacitat: " + e.getMessage());
+        }
+    }
+
+    @FXML
+    private void nacitajZInternetu() {
+        String adresa = urlField.getText().trim();
+
+        if (adresa.isEmpty()) {
+            nastavStav("Zadaj URL adresu suboru s TODO datami.");
+            return;
+        }
+
+        try {
+            nahradData(UkladacDat.nacitajZInternetu(adresa));
+            nastavStav("Data nacitane z internetu.");
+        } catch (IOException | IllegalArgumentException e) {
+            nastavStav("Internetove data sa nepodarilo nacitat: " + e.getMessage());
+        }
+    }
+
     private void obnovTodoZoznam() {
         todoList.getItems().setAll(manazer.getTodos().stream().map(Todo::getNazov).toList());
+    }
+
+    private void nahradData(List<Todo> todos) {
+        manazer.nahradTodos(todos);
+        obnovTodoZoznam();
+
+        if (todos.isEmpty()) {
+            polozkyList.getItems().clear();
+            zobrazenePolozky = new ArrayList<>();
+            return;
+        }
+
+        todoList.getSelectionModel().select(0);
+        zobrazPolozky();
+    }
+
+    private Path nacitajCestu() {
+        String text = suborField.getText().trim();
+
+        if (text.isEmpty()) {
+            nastavStav("Zadaj cestu k suboru.");
+            return null;
+        }
+
+        try {
+            return Path.of(text);
+        } catch (IllegalArgumentException e) {
+            nastavStav("Neplatna cesta k suboru: " + e.getMessage());
+            return null;
+        }
     }
 
     private void zobrazPolozky() {
