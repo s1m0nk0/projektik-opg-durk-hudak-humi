@@ -46,7 +46,7 @@
 
             <VBox spacing="10.0" HBox.hgrow="ALWAYS">
                 <Label text="Polozky vo vybranom TODO" />
-                <ListView fx:id="polozkyList" VBox.vgrow="ALWAYS" />
+                <ListView fx:id="polozkyList" fixedCellSize="70.0" VBox.vgrow="ALWAYS" />
 
                 <HBox spacing="8.0">
                     <Button onAction="#oznacAkoSplnene" text="Oznac ako splnene" />
@@ -58,7 +58,7 @@
                 <Label text="Nova polozka" />
                 <HBox spacing="8.0">
                     <TextField fx:id="nazovPolozkyField" promptText="Nazov polozky" HBox.hgrow="ALWAYS" />
-                    <TextField fx:id="deadlineField" prefWidth="160.0" promptText="Deadline YYYY-MM-DD" />
+                    <TextField fx:id="deadlineField" prefWidth="160.0" promptText="Deadline" />
                 </HBox>
                 <TextArea fx:id="popisField" prefRowCount="3" promptText="Popis polozky" wrapText="true" />
                 <Button maxWidth="Infinity" onAction="#pridajPolozku" text="Pridaj polozku" />

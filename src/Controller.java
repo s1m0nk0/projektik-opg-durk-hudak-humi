@@ -281,11 +281,13 @@ public class Controller {
     }
 
     private String formatujPolozku(Item item) {
-        String stav = item.isSplnene() ? "hotovo" : "treba spravit";
+        String stav = item.isSplnene() ? "✅" : "⬜";
         String deadline = item.getDeadline().isEmpty() ? "bez deadline" : item.getDeadline();
-        String popis = item.getPopis().isEmpty() ? "" : " | " + item.getPopis();
+        String popis = item.getPopis().isEmpty() ? "bez popisu" : item.getPopis();
 
-        return item.getNazov() + " - " + stav + " - " + deadline + popis;
+        return stav + " " + item.getNazov()
+                + "\n   Deadline: " + deadline
+                + "\n   Popis: " + popis;
     }
 
     private void nastavStav(String sprava) {
