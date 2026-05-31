@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
+<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/21.0.10" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller">
     <top>
         <VBox spacing="6.0">
             <padding>
@@ -36,14 +36,12 @@
                     <Button maxWidth="Infinity" onAction="#vymazTodo" text="Vymaz TODO" HBox.hgrow="ALWAYS" />
                 </HBox>
 
-                <Label text="Subor a internet" />
+                <Label text="Subor" />
                 <TextField fx:id="suborField" promptText="data/todo-data.txt" />
                 <HBox spacing="8.0">
                     <Button maxWidth="Infinity" onAction="#ulozDoSuboru" text="Uloz" HBox.hgrow="ALWAYS" />
                     <Button maxWidth="Infinity" onAction="#nacitajZoSuboru" text="Nacitaj" HBox.hgrow="ALWAYS" />
                 </HBox>
-                <TextField fx:id="urlField" promptText="https://example.com/todo-data.txt" />
-                <Button maxWidth="Infinity" onAction="#nacitajZInternetu" text="Nacitaj z internetu" />
             </VBox>
 
             <VBox spacing="10.0" HBox.hgrow="ALWAYS">

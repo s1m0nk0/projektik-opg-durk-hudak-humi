@@ -15,6 +15,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class Controller {
     private final Manazer manazer = new Manazer();
     private List<Item> zobrazenePolozky = new ArrayList<>();
@@ -33,9 +34,6 @@ public class Controller {
 
     @FXML
     private TextField suborField;
-
-    @FXML
-    private TextField urlField;
 
     @FXML
     private ListView<String> todoList;
@@ -200,23 +198,6 @@ public class Controller {
             nastavStav("Data nacitane zo suboru: " + cesta);
         } catch (IOException | IllegalArgumentException e) {
             nastavStav("Subor sa nepodarilo nacitat: " + e.getMessage());
-        }
-    }
-
-    @FXML
-    private void nacitajZInternetu() {
-        String adresa = urlField.getText().trim();
-
-        if (adresa.isEmpty()) {
-            nastavStav("Zadaj URL adresu suboru s TODO datami.");
-            return;
-        }
-
-        try {
-            nahradData(UkladacDat.nacitajZInternetu(adresa));
-            nastavStav("Data nacitane z internetu.");
-        } catch (IOException | IllegalArgumentException e) {
-            nastavStav("Internetove data sa nepodarilo nacitat: " + e.getMessage());
         }
     }
 
