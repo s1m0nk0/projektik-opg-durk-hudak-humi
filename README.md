@@ -145,20 +145,21 @@ flowchart TD
 A([Start: pridajPolozku]) --> B[Získaj vybraný TODO zoznam]
 B --> C{Je TODO null?}
 
-C -->|Áno| D[Nastav správu: "Najprv vyber TODO zoznam"]
+C -->|Áno| D[Nastav správu Najprv vyber TODO zoznam]
 D --> Z([End])
 
 C -->|Nie| E[Načítaj názov, popis a deadline]
 E --> F{Je názov prázdny?}
 
-F -->|Áno| G[Nastav správu: "Zadaj názov položky"]
+F -->|Áno| G[Nastav správu Zadaj názov položky]
 G --> Z
 
 F -->|Nie| H[Vytvor nový Item]
 H --> I[Pridaj položku do TODO]
 I --> J[Vyčisti vstupné polia]
 J --> K[Obnov zobrazenie položiek]
-K --> L[Nastav správu: "Položka pridaná"]
+K --> L[Nastav správu Položka pridaná]
+
 L --> Z
 ```
 
