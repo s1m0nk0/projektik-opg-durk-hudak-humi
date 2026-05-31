@@ -1,0 +1,15 @@
+# TODO_DATA_V1
+# TODO\tnazov
+# ITEM\tnazov\tpopis\tdeadline\tsplnene
+TODO	Skola
+ITEM	Dokoncit README	Doplnit popis formatu suborov a spustenie programu.	2026-06-02	false
+ITEM	Odovzdat projekt	Skontrolovat ulohy a nahrat projekt.	2026-06-05	false
+ITEM	Pripravit prezentaciu	Strucne vysvetlit triedy, subory a pracu s datami.	2026-06-04	false
+TODO	Domace ulohy
+ITEM	Nakup	Potraviny na vikend.	2026-05-31	true
+ITEM	Upratat izbu		2026-06-01	false
+ITEM	Zaplatit poplatok	Skontrolovat termin a potvrdenie platby.	2026-06-03	false
+TODO	Programovanie
+ITEM	Otestovat nacitanie	Nacitat data/todo-data.txt cez tlacidlo Nacitaj.	2026-06-01	false
+ITEM	Otestovat ulozenie	Vytvorit novu polozku a ulozit aktualny zoznam do suboru.	2026-06-01	false
+ITEM	Oznacit splnene	Vybrat polozku a kliknut na Oznac ako splnene.	2026-06-02	true
