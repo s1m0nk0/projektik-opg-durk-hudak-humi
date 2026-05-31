@@ -3,6 +3,10 @@
 ---
 
 ## Popis balíčkov a tried
+### `data`
+Obsahuje textové súbory
+
+---
 
 ### `modely`
 Obsahuje dátové triedy aplikácie.
@@ -17,7 +21,18 @@ Obsahuje aplikačnú logiku a analytiku.
 
 - **Manazer** – správa viacerých TODO zoznamov
 - **Triedenie** – triedenie položiek podľa názvu alebo deadline
+- **UkladacDat** – ukladanie dát
 - **Vypis** – výpis TODO zoznamov a položiek
+
+---
+
+### `Application`
+Trieda zodpovedná za spustenie JavaFX aplikácie, načítanie používateľského rozhrania a zobrazenie hlavného okna.
+
+---
+
+### `Controller`
+Riadi komunikáciu medzi používateľským rozhraním a aplikačnou logikou, spracováva používateľské akcie a aktualizuje zobrazené údaje.
 
 ---
 
@@ -31,6 +46,7 @@ Vstupný bod aplikácie, slúži na testovanie funkcionalít aplikácie.
 - Java
 - OOP princípy
 - Kolekcie (`List`)
+- JavaFX
 
 ---
 ## Diagramy
@@ -122,30 +138,28 @@ Main ..> Item
 Main ..> Vypis
 Main ..> Triedenie
 ```
-### Flowchart Item.java
+### Flowchart pre pridávanie polozky do todo
 ```mermaid
 flowchart TD
-    A[Start] --> B[Vytvorenie Item]
-    B --> C[Nastav nazov]
-    C --> D[Nastav popis]
-    D --> E[Nastav deadline]
-    E --> F[splnene = false]
 
-    F --> G{Pouzivatel vola metodu?}
+A([Start: pridajPolozku]) --> B[Získaj vybraný TODO zoznam]
+B --> C{Je TODO null?}
 
-    G -->|getNazov| H[Vrati nazov]
-    G -->|getPopis| I[Vrati popis]
-    G -->|getDeadline| J[Vrati deadline]
-    G -->|isSplnene| K[Vrati stav splnenia]
+C -->|Áno| D[Nastav správu: "Najprv vyber TODO zoznam"]
+D --> Z([End])
 
-    G -->|oznacAkoSplnene| L[splnene = true]
-    L --> M[Item je splneny]
+C -->|Nie| E[Načítaj názov, popis a deadline]
+E --> F{Je názov prázdny?}
 
-    H --> G
-    I --> G
-    J --> G
-    K --> G
-    M --> G
+F -->|Áno| G[Nastav správu: "Zadaj názov položky"]
+G --> Z
+
+F -->|Nie| H[Vytvor nový Item]
+H --> I[Pridaj položku do TODO]
+I --> J[Vyčisti vstupné polia]
+J --> K[Obnov zobrazenie položiek]
+K --> L[Nastav správu: "Položka pridaná"]
+L --> Z
 ```
 
 
@@ -153,7 +167,7 @@ flowchart TD
 
 ## Poznámky
 
-Projekt je určený ako školské zadanie / cvičný projekt. Neobsahuje grafické rozhranie ani ukladanie dát do súborov alebo databázy.
+Projekt je určený ako školské zadanie / cvičný projekt. Obsahuje grafické rozhranie a ukladanie dát do súborov alebo databázy.
 
 ---
 
@@ -162,4 +176,4 @@ Projekt je určený ako školské zadanie / cvičný projekt. Neobsahuje grafick
 Projekt vytvorený tímovou spoluprácou (Šimon Durkáč, Tomáš Humeňaj ft. Dávid Hudák).
 
 ## Špeciálne poďakovanie
-<img src="d2d150f41a9e0c477aec7d49d90a6f5b.jpg" width="600">
+<img src="specialne_podakovanie.jpg" width="600">
