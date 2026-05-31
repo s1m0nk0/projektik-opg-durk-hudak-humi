@@ -15,6 +15,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class Controller {
     private final Manazer manazer = new Manazer();
     private List<Item> zobrazenePolozky = new ArrayList<>();
@@ -33,9 +34,6 @@ public class Controller {
 
     @FXML
     private TextField suborField;
-
-    @FXML
-    private TextField urlField;
 
     @FXML
     private ListView<String> todoList;
@@ -203,23 +201,6 @@ public class Controller {
         }
     }
 
-    @FXML
-    private void nacitajZInternetu() {
-        String adresa = urlField.getText().trim();
-
-        if (adresa.isEmpty()) {
-            nastavStav("Zadaj URL adresu suboru s TODO datami.");
-            return;
-        }
-
-        try {
-            nahradData(UkladacDat.nacitajZInternetu(adresa));
-            nastavStav("Data nacitane z internetu.");
-        } catch (IOException | IllegalArgumentException e) {
-            nastavStav("Internetove data sa nepodarilo nacitat: " + e.getMessage());
-        }
-    }
-
     private void obnovTodoZoznam() {
         todoList.getItems().setAll(manazer.getTodos().stream().map(Todo::getNazov).toList());
     }
@@ -300,11 +281,13 @@ public class Controller {
     }
 
     private String formatujPolozku(Item item) {
-        String stav = item.isSplnene() ? "hotovo" : "treba spravit";
+        String stav = item.isSplnene() ? "✅" : "⬜";
         String deadline = item.getDeadline().isEmpty() ? "bez deadline" : item.getDeadline();
-        String popis = item.getPopis().isEmpty() ? "" : " | " + item.getPopis();
+        String popis = item.getPopis().isEmpty() ? "bez popisu" : item.getPopis();
 
-        return item.getNazov() + " - " + stav + " - " + deadline + popis;
+        return stav + " " + item.getNazov()
+                + "\n   Deadline: " + deadline
+                + "\n   Popis: " + popis;
     }
 
     private void nastavStav(String sprava) {
