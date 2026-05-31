@@ -188,7 +188,7 @@ public class Controller {
     @FXML
     private void nacitajZoSuboru() {
         Path cesta = nacitajCestu();
-
+/*humi*/
         if (cesta == null) {
             return;
         }
