@@ -10,6 +10,7 @@ public class Application extends javafx.application.Application {
         Parent root = FXMLLoader.load(getClass().getResource("primary.fxml"));
         Scene scene = new Scene(root, 900, 600);
 
+
         stage.setTitle("TODO aplikacia");
         stage.setScene(scene);
         stage.show();
