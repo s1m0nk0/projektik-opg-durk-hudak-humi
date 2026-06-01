@@ -1,0 +1,53 @@
+.root {
+    -fx-font-family: "Segoe UI";
+    -fx-background-color: linear-gradient(to bottom, #f7f9fc, #e9eef5);
+}
+
+.label {
+    -fx-text-fill: #1f2937;
+    -fx-font-size: 13px;
+}
+
+.label:focused {
+    -fx-text-fill: #1f2937;
+}
+
+.button {
+    -fx-background-color: #2563eb;
+    -fx-text-fill: white;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
+
+.button:hover {
+    -fx-background-color: #1d4ed8;
+}
+
+.text-field,
+.text-area,
+.list-view {
+    -fx-background-color: white;
+    -fx-background-radius: 8;
+    -fx-border-color: #cbd5e1;
+    -fx-border-radius: 8;
+    -fx-control-inner-background: white;
+}
+
+.text-field:focused,
+.text-area:focused,
+.list-view:focused {
+    -fx-border-color: #2563eb;
+}
+
+.text-area .content {
+    -fx-background-color: white;
+}
+
+.list-cell {
+    -fx-text-fill: #111827;
+}
+
+#stavLabel {
+    -fx-text-fill: #475569;
+    -fx-font-style: italic;
+}

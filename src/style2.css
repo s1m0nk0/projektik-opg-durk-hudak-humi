@@ -1,0 +1,66 @@
+.root {
+    -fx-font-family: "Segoe UI";
+    -fx-background-color: linear-gradient(to bottom, #111827, #0f172a);
+}
+
+.label {
+    -fx-text-fill: #e5e7eb;
+    -fx-font-size: 13px;
+}
+
+.button {
+    -fx-background-color: #334155;
+    -fx-text-fill: #f8fafc;
+    -fx-background-radius: 8;
+    -fx-border-radius: 8;
+}
+
+.button:hover {
+    -fx-background-color: #475569;
+}
+
+.text-field,
+.text-area,
+.list-view {
+    -fx-background-color: #1e293b;
+    -fx-background-radius: 8;
+    -fx-border-color: #475569;
+    -fx-border-radius: 8;
+    -fx-control-inner-background: #1e293b;
+    -fx-text-fill: #f8fafc;
+    -fx-prompt-text-fill: #94a3b8;
+}
+
+.text-field:focused,
+.text-area:focused,
+.list-view:focused {
+    -fx-border-color: #38bdf8;
+}
+
+.text-area .content {
+    -fx-background-color: #1e293b;
+}
+
+.text-area .text,
+.text-field .text {
+    -fx-fill: #f8fafc;
+}
+
+.list-cell {
+    -fx-text-fill: #e5e7eb;
+    -fx-background-color: transparent;
+}
+
+.list-cell .text {
+    -fx-fill: #e5e7eb;
+}
+
+.list-cell:filled:selected,
+.list-cell:filled:selected:hover {
+    -fx-background-color: #334155;
+}
+
+#stavLabel {
+    -fx-text-fill: #cbd5e1;
+    -fx-font-style: italic;
+}
